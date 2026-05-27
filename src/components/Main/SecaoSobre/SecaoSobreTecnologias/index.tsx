@@ -41,6 +41,18 @@ const tecnologias = [
     nome: "Wordpress",
     icon: publicAsset("wordpress-icon.svg"),
   },
+  {
+    nome: "Shadcn",
+    icon: publicAsset("shadcn-icon.svg"),
+  },
+  {
+    nome: "Claude",
+    icon: publicAsset("claude-icon.svg"),
+  },
+  {
+    nome: "Lovable",
+    icon: publicAsset("lovable-icon.svg"),
+  },
 ]
 
 export function SecaoSobreTecnologias() {
