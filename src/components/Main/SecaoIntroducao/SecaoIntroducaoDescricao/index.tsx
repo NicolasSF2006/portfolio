@@ -6,7 +6,7 @@ type HeaderNomeProps = {
 
 export function SecaoIntroducaoDescricao({ children }: HeaderNomeProps) {
   return (
-    <p className="text-center text-[12px] leading-[18px] font-light sm:text-xl sm:leading-normal">
+    <p className="text-center text-sm leading-[18px] font-light sm:text-xl sm:leading-normal">
       {children}
     </p>
   )

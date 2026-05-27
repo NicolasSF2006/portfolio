@@ -6,7 +6,7 @@ type Props = {
 
 export function SecaoSoftSkillsTitulo({ children }: Props) {
   return (
-    <h5 className="text-right text-[12px] font-bold text-white md:text-[18px] lg:text-2xl">
+    <h5 className="text-right text-sm font-bold text-white md:text-[18px] lg:text-2xl">
       {children}
     </h5>
   )

@@ -8,7 +8,7 @@ import "./secao-introducao.styles.css"
 
 export function SecaoIntroducao() {
   const buttonClasses =
-    "btn-gradient-border h-[26px] w-[102px] text-[10px] text-white backdrop-blur-[2px] sm:h-[45px] sm:w-[125px] sm:text-sm"
+    "btn-gradient-border h-[34px] w-[110px] text-sm text-white backdrop-blur-[2px] sm:h-[45px] sm:w-[125px] sm:text-sm"
 
   return (
     <section className="mx-auto flex w-full max-w-[326px] flex-col items-center gap-5 sm:max-w-[720px] sm:gap-7">
@@ -59,11 +59,7 @@ export function SecaoIntroducao() {
           </li>
 
           <li>
-            <Button
-              asChild
-              variant="ghost"
-              className="btn-gradient-border h-[26px] w-[93px] text-[10px] text-white backdrop-blur-[2px] sm:h-[45px] sm:w-[125px] sm:text-sm"
-            >
+            <Button asChild variant="ghost" className={buttonClasses}>
               <a
                 href={`${import.meta.env.BASE_URL}curriculo.pdf`}
                 download="curriculo-nicolas-frazao.pdf"
@@ -72,7 +68,7 @@ export function SecaoIntroducao() {
                 <img
                   src={`${import.meta.env.BASE_URL}download-icon.svg`}
                   alt=""
-                  className="h-3 w-3 sm:h-4 sm:w-4"
+                  className="h-4 w-4 sm:h-4 sm:w-4"
                 />
                 Currículo
               </a>

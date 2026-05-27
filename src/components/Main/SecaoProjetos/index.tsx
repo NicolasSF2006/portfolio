@@ -49,7 +49,7 @@ export function SecaoProjetos() {
       className="mt-[180px] flex scroll-mt-[120px] flex-col items-center gap-8 overflow-hidden lg:mt-[250px] lg:gap-14"
     >
       <SecaoProjetosTitulo>
-        Meus <strong className="text-[#B3F7FF]">projetos</strong>
+        Meus <strong className="font-bold text-[#B3F7FF]">projetos</strong>
       </SecaoProjetosTitulo>
 
       <div className="relative flex h-[360px] w-full items-center justify-center lg:h-[400px]">

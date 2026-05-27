@@ -43,7 +43,7 @@ export const projetos: Projeto[] = [
         "Analisada a demanda, construímos um projeto que transmite a identidade da marca. O site se adapta às necessidades do usuário (dispõe opção de tema escuro, ou claro; Para celular, ou computador), apresenta a marca e seus serviços e possibilita o contato entre cliente e empresa através de um formulário.",
       ],
 
-      codigoUrl: "https://github.com/seu-usuario/serenatto",
+      codigoUrl: "https://github.com/NicolasSF2006/cafeSerenatto",
     },
 
     link: "https://seudominio.com",
@@ -84,7 +84,7 @@ export const projetos: Projeto[] = [
         "O site foi construído com design e animações modernos, trazendo identidade jovem. Entre as funcionalidades estão a organização de tarefas, tempo e música ambiente para auxiliar a concentração.",
       ],
 
-      codigoUrl: "https://github.com/seu-usuario/fokus",
+      codigoUrl: "https://github.com/NicolasSF2006/fokus/",
     },
 
     link: "https://google.com",
@@ -125,7 +125,7 @@ export const projetos: Projeto[] = [
         "Para tornar isso possível, implementei uma API fictícia, utilizando Javascript e JSON, que possibilita o armazenamento, busca e exclusão dos “pensamentos” dos usuários.",
       ],
 
-      codigoUrl: "https://github.com/seu-usuario/memoteca",
+      codigoUrl: "https://github.com/NicolasSF2006/memoteca",
     },
 
     link: "https://github.com",
