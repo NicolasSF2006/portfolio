@@ -7,7 +7,7 @@ export function BackgroundHero() {
       espaços pretos secos durante o scroll no mobile.
       Os círculos por cima criam os brilhos decorativos.
     */
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#111]">
+    <div className="pointer-events-none fixed top-[-30vh] right-0 bottom-[-30vh] left-0 z-0 overflow-hidden bg-[#111]">
       {/* Base de gradiente para cobrir toda a viewport */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.18),transparent_35%),radial-gradient(circle_at_80%_45%,rgba(168,85,247,0.18),transparent_35%),linear-gradient(180deg,#111_0%,#121827_45%,#111_100%)]" />
 
