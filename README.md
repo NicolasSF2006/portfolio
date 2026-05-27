@@ -1,21 +1,54 @@
-# React + TypeScript + Vite + shadcn/ui
+# Portfólio | Nicolas Frazão
 
-This is a template for a new Vite project with React, TypeScript, and shadcn/ui.
+Portfólio pessoal desenvolvido para apresentar meus projetos, habilidades e formas de contato. O site foi construído com foco em responsividade, animações suaves, navegação intuitiva e uma identidade visual moderna.
 
-## Adding components
+## ✨ Funcionalidades
 
-To add components to your app, run the following command:
+- Layout responsivo para desktop, tablet e mobile
+- Header fixo com efeito glassmorphism
+- Seção de introdução com botões de navegação
+- Seção “Sobre” com tecnologias utilizadas
+- Seção de soft skills
+- Carousel de projetos com interação por setas no desktop
+- Carousel com arraste horizontal no mobile
+- Modal de detalhes dos projetos
+- Navegação entre projetos dentro do modal
+- Suporte a imagem e vídeo no modal
+- Formulário funcional com envio de email via EmailJS
+- Mensagem de sucesso animada após envio do formulário
+- Botão flutuante de WhatsApp
+- Background decorativo responsivo
 
-```bash
-npx shadcn@latest add button
-```
+## 🚀 Tecnologias utilizadas
 
-This will place the ui components in the `src/components` directory.
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+- Lucide React
+- React Icons
+- EmailJS
+- GitHub Pages
 
-## Using components
+## 📁 Estrutura principal
 
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button"
+```txt
+src/
+├── components/
+│   ├── BackgroundHero/
+│   ├── Footer/
+│   ├── Header/
+│   ├── Main/
+│   │   ├── SecaoIntroducao/
+│   │   ├── SecaoSobre/
+│   │   ├── SecaoSoftSkills/
+│   │   ├── SecaoProjetos/
+│   │   └── SecaoContato/
+│   ├── WhatsappButton/
+│   └── ui/
+├── App.tsx
+├── App.styles.css
+└── main.tsx
 ```
