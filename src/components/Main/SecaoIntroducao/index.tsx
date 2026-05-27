@@ -7,11 +7,27 @@ import { SecaoIntroducaoTitulo } from "./SecaoIntroducaoTitulo"
 import "./secao-introducao.styles.css"
 
 export function SecaoIntroducao() {
+  /*
+    Classe reutilizada nos três botões da seção.
+
+    btn-gradient-border: classe CSS personalizada responsável pela borda em gradiente.
+    Tamanhos responsivos:
+    - mobile: h-[34px] w-[110px]
+    - desktop/tablet: sm:h-[45px] sm:w-[125px]
+  */
   const buttonClasses =
     "btn-gradient-border h-[34px] w-[110px] text-sm text-white backdrop-blur-[2px] sm:h-[45px] sm:w-[125px] sm:text-sm"
 
   return (
+    /*
+      Seção de introdução do portfólio.
+
+      max-w-[326px]: largura pensada para mobile.
+      sm:max-w-[720px]: aumenta a largura em telas maiores.
+      gap responsivo: controla o espaçamento entre título, descrição e botões.
+    */
     <section className="mx-auto flex w-full max-w-[326px] flex-col items-center gap-5 sm:max-w-[720px] sm:gap-7">
+      {/* Agrupa título e subtítulo para controlar o espaçamento entre eles */}
       <div className="flex flex-col gap-1 sm:gap-2">
         <SecaoIntroducaoTitulo>
           Desenvolvedor{" "}
@@ -23,6 +39,7 @@ export function SecaoIntroducao() {
         </SecaoIntroducaoSubtitulo>
       </div>
 
+      {/* Texto principal da introdução, com palavras-chave destacadas */}
       <SecaoIntroducaoDescricao>
         Meu trabalho é{" "}
         <strong className="font-light text-[#B3F7FF]">desenvolver sites</strong>{" "}
@@ -38,15 +55,18 @@ export function SecaoIntroducao() {
         do seu site.
       </SecaoIntroducaoDescricao>
 
+      {/* Navegação principal da introdução */}
       <nav>
         <ul className="flex flex-row items-center gap-3 sm:gap-8">
           <li>
+            {/* Link interno que leva até a seção de projetos */}
             <Button asChild variant="ghost" className={buttonClasses}>
               <a href="#projetos">Ver Projetos</a>
             </Button>
           </li>
 
           <li>
+            {/* Link externo para o LinkedIn */}
             <Button asChild variant="ghost" className={buttonClasses}>
               <a
                 href="https://www.linkedin.com/in/nicolas-fraz%C3%A3o-028bb7315/"
@@ -59,6 +79,12 @@ export function SecaoIntroducao() {
           </li>
 
           <li>
+            {/*
+              Download do currículo.
+
+              import.meta.env.BASE_URL garante que o caminho funcione tanto
+              localmente quanto no GitHub Pages, onde o site fica dentro de /portfolio/.
+            */}
             <Button asChild variant="ghost" className={buttonClasses}>
               <a
                 href={`${import.meta.env.BASE_URL}curriculo.pdf`}

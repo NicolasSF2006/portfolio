@@ -4,6 +4,12 @@ type Props = {
 }
 
 export function SecaoContatoCampo({ label, textarea = false }: Props) {
+  /*
+    Classes base compartilhadas entre input e textarea.
+
+    Isso evita repetição de estilos caso esse componente seja usado
+    para montar campos de formulário de forma mais reutilizável.
+  */
   const baseClasses = `
     w-full
     rounded-lg
@@ -25,6 +31,12 @@ export function SecaoContatoCampo({ label, textarea = false }: Props) {
         {label}
       </label>
 
+      {/*
+        Renderiza textarea ou input de acordo com a prop "textarea".
+
+        textarea = true: campo maior para mensagens.
+        textarea = false: input comum.
+      */}
       {textarea ? (
         <textarea
           placeholder="Digitar"

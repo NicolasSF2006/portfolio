@@ -1,3 +1,9 @@
+/*
+  Botão com borda em gradiente.
+
+  A classe é aplicada nos botões da introdução para criar uma borda
+  personalizada sem alterar diretamente o componente Button do shadcn.
+*/
 .btn-gradient-border {
   position: relative;
   overflow: hidden;
@@ -12,6 +18,12 @@
     box-shadow 0.3s ease;
 }
 
+/*
+  Pseudo-elemento responsável por desenhar a borda em gradiente.
+
+  O truque com mask faz com que apenas a borda fique visível,
+  mantendo o centro do botão transparente.
+*/
 .btn-gradient-border::before {
   content: "";
   position: absolute;
@@ -35,6 +47,11 @@
   pointer-events: none;
 }
 
+/*
+  Estado de hover do botão.
+
+  Adiciona fundo translúcido e sombra para indicar interação.
+*/
 .btn-gradient-border:hover {
   background: rgba(255, 255, 255, 0.3) !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);

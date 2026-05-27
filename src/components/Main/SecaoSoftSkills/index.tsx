@@ -4,13 +4,28 @@ import { SecaoSoftSkillsTitulo } from "./SecaoSoftSkillsTitulo"
 
 export function SecaoSoftSkills() {
   return (
+    /*
+      Seção de soft skills.
+
+      No mobile/tablet, a seção fica em coluna, alinhada à direita.
+      No desktop, ela mantém alinhamento à direita e recebe margem lateral
+      para ficar posicionada visualmente do lado oposto da seção "Sobre".
+    */
     <section className="mx-auto mt-[180px] flex w-full max-w-[355px] flex-col items-end gap-5 md:max-w-[720px] md:px-8 lg:mt-[232px] lg:mr-[138px] lg:ml-auto lg:max-w-[931px] lg:gap-8 lg:px-0">
+      {/* Título da seção */}
       <SecaoSoftSkillsTitulo>
         Feedback não é crítica, é ferramenta.
       </SecaoSoftSkillsTitulo>
 
+      {/*
+        Descrição da seção.
+
+        Existem dois textos diferentes:
+        - mobile/tablet: texto mais direto e com palavras em destaque.
+        - desktop: texto mais corrido, seguindo o layout original.
+      */}
       <SecaoSoftSkillsDescricao>
-        {/* MOBILE/TABLET */}
+        {/* Texto exibido no mobile e tablet */}
         <span className="lg:hidden">
           Sou amante de filosofia e muito <strong>empático</strong>,
           características que me permitem bom{" "}
@@ -23,7 +38,7 @@ export function SecaoSoftSkills() {
           .
         </span>
 
-        {/* DESKTOP */}
+        {/* Texto exibido apenas no desktop */}
         <span className="hidden lg:inline">
           Sou amante de filosofia e uma pessoa muito empática, características
           que me permitem bom trabalho em equipe. Possuo espírito de liderança e
@@ -32,7 +47,12 @@ export function SecaoSoftSkills() {
         </span>
       </SecaoSoftSkillsDescricao>
 
-      {/* desktop only */}
+      {/*
+        Lista de soft skills.
+
+        A lista aparece apenas no desktop para manter o mobile mais limpo
+        e evitar excesso de informação visual em telas menores.
+      */}
       <div className="hidden lg:block">
         <SecaoSoftSkillsLista />
       </div>
