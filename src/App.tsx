@@ -28,7 +28,7 @@ export function App() {
       overflow-hidden: evita rolagem lateral causada por elementos decorativos.
       bg-[#111]: define a cor base escura do site.
     */
-    <div className="relative isolate min-h-screen overflow-hidden bg-[#111]">
+    <div className="relative isolate min-h-dvh bg-[#111]">
       {/* Background decorativo fixo, posicionado atrás do conteúdo */}
       <BackgroundHero />
 
@@ -37,7 +37,7 @@ export function App() {
 
         z-10: mantém header, main e footer acima do background.
       */}
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-x-hidden">
         {/* Cabeçalho fixo com nome e saudação */}
         <Header />
 
