@@ -95,7 +95,7 @@ export function SecaoProjetos() {
         {/* Seta esquerda exibida apenas no desktop */}
         <button
           onClick={handlePrev}
-          className="absolute left-[26%] z-50 hidden text-white transition-opacity hover:opacity-70 lg:block"
+          className="absolute left-[35%] z-50 hidden text-white transition-opacity hover:opacity-70 lg:block"
         >
           <ChevronLeft size={28} />
         </button>
@@ -103,7 +103,7 @@ export function SecaoProjetos() {
         {/* Seta direita exibida apenas no desktop */}
         <button
           onClick={handleNext}
-          className="absolute right-[26%] z-50 hidden text-white transition-opacity hover:opacity-70 lg:block"
+          className="absolute right-[35%] z-50 hidden text-white transition-opacity hover:opacity-70 lg:block"
         >
           <ChevronRight size={28} />
         </button>
