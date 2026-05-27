@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { motion, type PanInfo } from "framer-motion"
 
@@ -16,8 +16,8 @@ type ProjetoModalProps = {
   /*
     Índice do projeto clicado no carousel.
 
-    Esse valor define qual projeto será exibido primeiro
-    quando o modal abrir.
+    Esse índice define qual projeto será exibido primeiro
+    quando o modal for aberto.
   */
   projetoIndex: number
 }
@@ -27,37 +27,60 @@ export function SecaoProjetosModal({
   projetoIndex,
 }: ProjetoModalProps) {
   /*
-    Estado interno do modal.
+    Controla se o modal está aberto ou fechado.
 
-    Permite navegar entre projetos dentro do próprio modal,
-    sem precisar fechar e abrir outro card.
+    Esse estado é necessário porque o modal precisa interagir
+    com o histórico do navegador no mobile.
+  */
+  const [open, setOpen] = useState(false)
+
+  /*
+    Controla qual projeto está sendo exibido dentro do modal.
+
+    Isso permite navegar entre projetos usando as setas no desktop
+    ou arrastando no mobile.
   */
   const [currentIndex, setCurrentIndex] = useState(projetoIndex)
+
+  /*
+    Guarda se o modal adicionou uma entrada falsa no histórico.
+
+    Essa referência evita que o site saia da página quando o usuário
+    aperta o botão de voltar do celular com o modal aberto.
+  */
+  const pushedModalHistoryRef = useRef(false)
 
   // Projeto atualmente exibido no modal
   const projeto = projetos[currentIndex]
 
   /*
-    Mídia principal inferior esquerda do modal.
+    Mídia exibida na parte inferior esquerda do modal.
 
-    Em alguns projetos, esse conteúdo é uma imagem.
-    No projeto Fokus, esse conteúdo é um vídeo .mp4.
+    Alguns projetos usam imagem.
+    O projeto Fokus usa vídeo .mp4.
   */
   const midiaInferiorEsquerda = projeto.modal.imagemInferiorEsquerda
+
+  /*
+    Verifica se a mídia inferior esquerda é um vídeo.
+
+    Se for .mp4, o componente renderiza <video>.
+    Caso contrário, renderiza <img>.
+  */
   const isVideo = midiaInferiorEsquerda.endsWith(".mp4")
 
   /*
-    Avança para o próximo projeto.
+    Avança para o próximo projeto dentro do modal.
 
-    O operador % garante loop infinito:
-    depois do último projeto, volta para o primeiro.
+    O operador % faz o modal voltar para o primeiro projeto
+    quando chega ao final da lista.
   */
   function handleNextProject() {
     setCurrentIndex((prev) => (prev + 1) % projetos.length)
   }
 
   /*
-    Volta para o projeto anterior.
+    Volta para o projeto anterior dentro do modal.
 
     Se estiver no primeiro projeto, volta para o último.
   */
@@ -68,9 +91,11 @@ export function SecaoProjetosModal({
   /*
     Controla o gesto de arrastar no mobile.
 
-    Arrastar para a esquerda avança.
-    Arrastar para a direita volta.
-    A velocidade também é considerada para deixar o gesto mais natural.
+    Arrastar para a esquerda avança para o próximo projeto.
+    Arrastar para a direita volta para o projeto anterior.
+
+    A velocidade do gesto também é considerada para deixar
+    a experiência mais natural.
   */
   function handleDragEnd(
     _: MouseEvent | TouchEvent | PointerEvent,
@@ -89,17 +114,79 @@ export function SecaoProjetosModal({
   }
 
   /*
-    Sempre que o modal abre, reseta o projeto exibido
-    para o card que o usuário clicou no carousel.
+    Controla abertura e fechamento do modal.
+
+    Quando o modal abre:
+    - define o projeto atual com base no card clicado;
+    - abre o modal;
+    - adiciona uma entrada no histórico do navegador.
+
+    Essa entrada no histórico faz com que o botão "voltar" do celular
+    feche o modal antes de sair do site.
   */
-  function handleOpenChange(open: boolean) {
-    if (open) {
+  function handleOpenChange(nextOpen: boolean) {
+    if (nextOpen) {
       setCurrentIndex(projetoIndex)
+      setOpen(true)
+
+      window.history.pushState(
+        {
+          modal: "projeto",
+        },
+        "",
+        window.location.href
+      )
+
+      pushedModalHistoryRef.current = true
+
+      return
     }
+
+    /*
+      Quando o modal é fechado pelo botão X, pelo clique fora ou pelo Esc,
+      removemos a entrada falsa do histórico usando history.back().
+    */
+    if (pushedModalHistoryRef.current) {
+      window.history.back()
+      return
+    }
+
+    setOpen(false)
   }
 
+  /*
+    Escuta o evento de voltar do navegador.
+
+    No celular, isso cobre:
+    - botão físico/virtual de voltar;
+    - gesto de voltar pela lateral da tela.
+
+    Se o modal estiver aberto, o evento fecha o modal
+    em vez de deixar o usuário sair do site imediatamente.
+  */
+  useEffect(() => {
+    function handlePopState() {
+      if (open && pushedModalHistoryRef.current) {
+        pushedModalHistoryRef.current = false
+        setOpen(false)
+      }
+    }
+
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [open])
+
   return (
-    <Dialog onOpenChange={handleOpenChange}>
+    /*
+      Modal controlado pelo estado "open".
+
+      Isso é essencial para permitir que o botão/gesto de voltar
+      do navegador feche o modal corretamente.
+    */
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       {/* Elemento que dispara a abertura do modal */}
       <DialogTrigger asChild>{children}</DialogTrigger>
 
@@ -109,10 +196,11 @@ export function SecaoProjetosModal({
         Mobile:
         - largura baseada na viewport;
         - scroll vertical habilitado;
-        - layout em coluna.
+        - layout em coluna;
+        - navegação por arraste horizontal.
 
         Desktop:
-        - tamanho fixo maior;
+        - tamanho maior;
         - overflow visível para permitir setas laterais;
         - layout em grid.
       */}
@@ -120,8 +208,8 @@ export function SecaoProjetosModal({
         {/*
           Layout mobile.
 
-          Usa motion.div para permitir arrastar horizontalmente
-          e trocar o projeto exibido dentro do modal.
+          O motion.div permite arrastar o conteúdo para os lados
+          e trocar de projeto sem fechar o modal.
         */}
         <motion.div
           drag="x"
@@ -134,10 +222,12 @@ export function SecaoProjetosModal({
           onDragEnd={handleDragEnd}
           className="flex w-full cursor-grab [touch-action:pan-y] flex-col items-center overflow-x-hidden active:cursor-grabbing lg:hidden"
         >
+          {/* Título do projeto */}
           <h2 className="text-center font-['Encode_Sans_Semi_Expanded'] text-[16px] leading-normal font-bold text-[#B3F7FF]">
             {projeto.titulo}
           </h2>
 
+          {/* Subtítulo do projeto */}
           <h3 className="mt-2 text-center text-[14px] leading-normal font-bold text-white">
             {projeto.subtitulo}
           </h3>
@@ -154,7 +244,7 @@ export function SecaoProjetosModal({
             ))}
           </div>
 
-          {/* Duas imagens superiores do layout mobile */}
+          {/* Imagens superiores do layout mobile */}
           <div className="mt-8 flex w-full max-w-[330px] items-center justify-center gap-[3px] overflow-hidden">
             <img
               src={projeto.modal.imagemTopoDireita}
@@ -189,7 +279,7 @@ export function SecaoProjetosModal({
             )}
           </div>
 
-          {/* Tags do projeto */}
+          {/* Tags das tecnologias usadas no projeto */}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {projeto.tags.map((tag) => (
               <ProjetoTag
@@ -201,7 +291,7 @@ export function SecaoProjetosModal({
             ))}
           </div>
 
-          {/* Botão para acessar o código do projeto */}
+          {/* Botão para acessar o repositório/código do projeto */}
           <Button
             asChild
             className="mt-6 h-[40px] max-w-full rounded-[8px] bg-[#B3F7FF]/60 px-6 text-[14px] font-bold text-white hover:bg-[#B3F7FF]/80"
@@ -219,11 +309,11 @@ export function SecaoProjetosModal({
         {/*
           Layout desktop.
 
-          Fica escondido no mobile e aparece apenas a partir de lg.
-          Usa grid para posicionar texto, imagens, vídeo e botão.
+          Fica escondido no mobile e aparece apenas em telas grandes.
+          Usa grid para posicionar texto, imagens/vídeo, tags e botão.
         */}
         <div className="relative hidden h-full w-full lg:block lg:p-1 xl:p-4">
-          {/* Setas laterais para navegar entre projetos no desktop */}
+          {/* Seta para voltar ao projeto anterior */}
           <button
             type="button"
             onClick={handlePrevProject}
@@ -232,6 +322,7 @@ export function SecaoProjetosModal({
             <ChevronLeft size={38} />
           </button>
 
+          {/* Seta para avançar ao próximo projeto */}
           <button
             type="button"
             onClick={handleNextProject}
@@ -243,11 +334,11 @@ export function SecaoProjetosModal({
           {/*
             Grid principal do modal desktop.
 
-            As colunas e linhas têm valores fixos para reproduzir
-            o layout visual do Figma.
+            Os valores fixos das colunas e linhas foram definidos
+            para reproduzir o layout visual planejado no Figma.
           */}
           <div className="grid h-full w-full grid-cols-[480px_60px_29px_9px_234px] grid-rows-[220px_20px_312px_15px_42px] items-center justify-center">
-            {/* Texto principal do modal */}
+            {/* Bloco textual do modal */}
             <div className="col-start-1 row-start-1 flex w-[520px] flex-col">
               <h2 className="font-['Encode_Sans_Semi_Expanded'] text-[24px] leading-none font-bold text-[#B3F7FF]">
                 {projeto.titulo}
@@ -280,7 +371,7 @@ export function SecaoProjetosModal({
               </div>
             </div>
 
-            {/* Imagem superior direita */}
+            {/* Imagem superior direita do modal */}
             <img
               src={projeto.modal.imagemTopoDireita}
               alt={projeto.titulo}
@@ -305,14 +396,14 @@ export function SecaoProjetosModal({
               />
             )}
 
-            {/* Imagem inferior direita */}
+            {/* Imagem inferior direita do modal */}
             <img
               src={projeto.modal.imagemInferiorDireita}
               alt={`${projeto.titulo} mobile`}
               className="col-start-5 row-start-3 h-[312px] w-[234px] object-cover"
             />
 
-            {/* Botão de acesso ao código */}
+            {/* Botão para acessar o código do projeto */}
             <Button
               asChild
               className="col-start-5 row-start-5 h-[42px] justify-self-end rounded-[8px] bg-[#B3F7FF]/60 px-6 text-[16px] font-bold text-white hover:bg-[#B3F7FF]/80"
