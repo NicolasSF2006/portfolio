@@ -30,7 +30,7 @@ export function SecaoSobre() {
       </div>
 
       <img
-        src="/eu.png"
+        src={`${import.meta.env.BASE_URL}eu.png`}
         alt="Foto de perfil"
         className="hidden lg:block lg:h-[260px] lg:w-[260px]"
       />

@@ -1,31 +1,35 @@
+const publicAsset = (path: string) => {
+  return `${import.meta.env.BASE_URL}${path}`
+}
+
 const tecnologias = [
   {
     nome: "HTML",
-    icon: "/html-icon.svg",
+    icon: publicAsset("html-icon.svg"),
   },
   {
     nome: "CSS",
-    icon: "/css-icon.svg",
+    icon: publicAsset("css-icon.svg"),
   },
   {
     nome: "Javascript",
-    icon: "/js-icon.svg",
+    icon: publicAsset("js-icon.svg"),
   },
   {
     nome: "Bootstrap",
-    icon: "/bootstrap-icon.svg",
+    icon: publicAsset("bootstrap-icon.svg"),
   },
   {
     nome: "React.JS",
-    icon: "/react-icon.svg",
+    icon: publicAsset("react-icon.svg"),
   },
   {
     nome: "SEO",
-    icon: "/seo-icon.svg",
+    icon: publicAsset("seo-icon.svg"),
   },
   {
     nome: "Wordpress",
-    icon: "/wordpress-icon.svg",
+    icon: publicAsset("wordpress-icon.svg"),
   },
 ]
 

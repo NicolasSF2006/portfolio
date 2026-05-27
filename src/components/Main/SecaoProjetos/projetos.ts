@@ -1,3 +1,7 @@
+const publicAsset = (path: string) => {
+  return `${import.meta.env.BASE_URL}${path}`
+}
+
 export type Projeto = {
   titulo: string
   subtitulo: string
@@ -24,12 +28,14 @@ export const projetos: Projeto[] = [
     titulo: "Serenatto",
     subtitulo: "Site institucional / vitrine para cafeteria",
 
-    imagem: "/serenatto-card.png",
+    imagem: publicAsset("serenatto-card.png"),
 
     modal: {
-      imagemTopoDireita: "/serenatto-background-introducao.svg",
-      imagemInferiorEsquerda: "/serenatto-background-pages.svg",
-      imagemInferiorDireita: "/serenatto-background-mobile-previa.svg",
+      imagemTopoDireita: publicAsset("serenatto-background-introducao.svg"),
+      imagemInferiorEsquerda: publicAsset("serenatto-background-pages.svg"),
+      imagemInferiorDireita: publicAsset(
+        "serenatto-background-mobile-previa.svg"
+      ),
 
       descricao: [
         "O Serenatto precisava de uma página para conquistar clientes e fornecer as informações necessárias: modalidades de trabalho, horários, cardápio, localização, contato, entre outras...",
@@ -65,12 +71,12 @@ export const projetos: Projeto[] = [
     titulo: "Fokus",
     subtitulo: "Site para organização e método de estudo",
 
-    imagem: "/fokus-card.png",
+    imagem: publicAsset("fokus-card.png"),
 
     modal: {
-      imagemTopoDireita: "/fokus-background-introducao.svg",
-      imagemInferiorEsquerda: "/fokus-demo.mp4",
-      imagemInferiorDireita: "/fokus-background-previa.png",
+      imagemTopoDireita: publicAsset("fokus-background-introducao.svg"),
+      imagemInferiorEsquerda: publicAsset("fokus-demo.mp4"),
+      imagemInferiorDireita: publicAsset("fokus-background-previa.png"),
 
       descricao: [
         "O Fokus precisava de uma página para auxiliar estudantes que utilizam o método Pomodoro, que alterna entre pausas e foco, com tempo cronometrado.",
@@ -106,12 +112,12 @@ export const projetos: Projeto[] = [
     titulo: "Memoteca",
     subtitulo: "Site para catalogar ideias e citações",
 
-    imagem: "/memoteca-card.png",
+    imagem: publicAsset("memoteca-card.png"),
 
     modal: {
-      imagemTopoDireita: "/memoteca-background-introducao.svg",
-      imagemInferiorEsquerda: "/memoteca-background-codigo.svg",
-      imagemInferiorDireita: "/memoteca-background-previa.png",
+      imagemTopoDireita: publicAsset("memoteca-background-introducao.svg"),
+      imagemInferiorEsquerda: publicAsset("memoteca-background-codigo.svg"),
+      imagemInferiorDireita: publicAsset("memoteca-background-previa.png"),
 
       descricao: [
         "A Memoteca é um site para catalogar ideias e citações, com postagens públicas que ficam armazenadas, ou podem ser excluídas.",

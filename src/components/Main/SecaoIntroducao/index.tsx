@@ -65,12 +65,12 @@ export function SecaoIntroducao() {
               className="btn-gradient-border h-[26px] w-[93px] text-[10px] text-white backdrop-blur-[2px] sm:h-[45px] sm:w-[125px] sm:text-sm"
             >
               <a
-                href="/curriculo.pdf"
+                href={`${import.meta.env.BASE_URL}curriculo.pdf`}
                 download
                 className="flex items-center gap-1"
               >
                 <img
-                  src="/download-icon.svg"
+                  src={`${import.meta.env.BASE_URL}download-icon.svg`}
                   alt=""
                   className="h-3 w-3 sm:h-4 sm:w-4"
                 />
