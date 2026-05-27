@@ -66,7 +66,7 @@ export function SecaoIntroducao() {
             >
               <a
                 href={`${import.meta.env.BASE_URL}curriculo.pdf`}
-                download
+                download="curriculo-nicolas-frazao.pdf"
                 className="flex items-center gap-1"
               >
                 <img
