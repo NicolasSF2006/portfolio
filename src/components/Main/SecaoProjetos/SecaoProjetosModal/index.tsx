@@ -60,7 +60,7 @@ export function SecaoProjetosModal({
     <Dialog onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
 
-      <DialogContent className="max-h-[90vh] w-[calc(100vw-32px)] max-w-[576px] overflow-x-hidden overflow-y-auto rounded-[16px] border border-white/15 bg-[rgba(32,32,32,0.95)] p-6 text-white shadow-2xl sm:max-w-[576px] lg:h-[750px] lg:w-[1220px] lg:max-w-none lg:overflow-visible lg:rounded-[32px_0px] lg:p-[50px]">
+      <DialogContent className="max-h-[90vh] w-[calc(100vw-32px)] max-w-[576px] overflow-x-hidden overflow-y-auto rounded-[16px] border border-white/15 bg-[rgba(32,32,32,0.95)] p-6 text-white shadow-2xl sm:max-w-[576px] lg:h-[675px] lg:w-[1000px] lg:max-w-none lg:overflow-visible lg:rounded-[32px_0px]">
         {/* MOBILE */}
         <motion.div
           drag="x"
@@ -151,11 +151,11 @@ export function SecaoProjetosModal({
         </motion.div>
 
         {/* DESKTOP */}
-        <div className="relative hidden h-full w-full lg:block">
+        <div className="relative hidden h-full w-full lg:block lg:p-1 xl:p-4">
           <button
             type="button"
             onClick={handlePrevProject}
-            className="absolute top-1/2 left-[-85px] z-50 -translate-y-1/2 text-white transition-opacity hover:opacity-70"
+            className="absolute top-1/2 left-[-25px] z-50 -translate-y-1/2 text-white transition-opacity hover:opacity-70"
           >
             <ChevronLeft size={38} />
           </button>
@@ -163,12 +163,12 @@ export function SecaoProjetosModal({
           <button
             type="button"
             onClick={handleNextProject}
-            className="absolute top-1/2 right-[-85px] z-50 -translate-y-1/2 text-white transition-opacity hover:opacity-70"
+            className="absolute top-1/2 right-[-25px] z-50 -translate-y-1/2 text-white transition-opacity hover:opacity-70"
           >
             <ChevronRight size={38} />
           </button>
 
-          <div className="grid h-full w-full grid-cols-[520px_37px_69px_9px_274px] grid-rows-[260px_7px_352px_15px_42px] justify-center">
+          <div className="grid h-full w-full grid-cols-[480px_60px_29px_9px_234px] grid-rows-[220px_20px_312px_15px_42px] items-center justify-center">
             <div className="col-start-1 row-start-1 flex w-[520px] flex-col">
               <h2 className="font-['Encode_Sans_Semi_Expanded'] text-[24px] leading-none font-bold text-[#B3F7FF]">
                 {projeto.titulo}
@@ -204,14 +204,14 @@ export function SecaoProjetosModal({
             <img
               src={projeto.modal.imagemTopoDireita}
               alt={projeto.titulo}
-              className="col-span-3 col-start-3 row-start-1 h-[260px] w-[352px] object-cover"
+              className="col-span-3 col-start-3 row-start-1 h-[220px] w-[312px] object-cover"
             />
 
             {isVideo ? (
               <video
                 key={midiaInferiorEsquerda}
                 src={midiaInferiorEsquerda}
-                className="col-span-3 col-start-1 row-start-3 h-[352px] w-[626px] object-cover"
+                className="col-span-3 col-start-1 row-start-3 h-[312px] w-[586px] object-cover"
                 muted
                 playsInline
                 controls
@@ -220,14 +220,14 @@ export function SecaoProjetosModal({
               <img
                 src={midiaInferiorEsquerda}
                 alt={`${projeto.titulo} desktop`}
-                className="col-span-3 col-start-1 row-start-3 h-[352px] w-[626px] object-cover"
+                className="col-span-3 col-start-1 row-start-3 h-[312px] w-[586px] object-cover"
               />
             )}
 
             <img
               src={projeto.modal.imagemInferiorDireita}
               alt={`${projeto.titulo} mobile`}
-              className="col-start-5 row-start-3 h-[352px] w-[274px] object-cover"
+              className="col-start-5 row-start-3 h-[312px] w-[234px] object-cover"
             />
 
             <Button

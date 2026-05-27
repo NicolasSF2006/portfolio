@@ -1,20 +1,20 @@
 export function BackgroundHero() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       {/* Topo esquerdo */}
-      <div className="absolute top-[-200px] left-[-300px] h-[800px] w-[800px] rounded-full bg-cyan-400/20 blur-[180px]" />
+      <div className="absolute top-[-120px] left-[-160px] h-[360px] w-[360px] rounded-full bg-cyan-400/20 blur-[100px] sm:top-[-160px] sm:left-[-220px] sm:h-[520px] sm:w-[520px] sm:blur-[140px] lg:top-[-200px] lg:left-[-300px] lg:h-[800px] lg:w-[800px] lg:blur-[180px]" />
 
       {/* Topo direito */}
-      <div className="absolute top-[100px] right-[-300px] h-[700px] w-[700px] rounded-full bg-violet-500/20 blur-[180px]" />
+      <div className="absolute top-[180px] right-[-180px] h-[360px] w-[360px] rounded-full bg-violet-500/20 blur-[110px] sm:top-[120px] sm:right-[-240px] sm:h-[500px] sm:w-[500px] sm:blur-[150px] lg:top-[100px] lg:right-[-300px] lg:h-[700px] lg:w-[700px] lg:blur-[180px]" />
 
       {/* Meio */}
-      <div className="absolute top-[900px] left-[20%] h-[700px] w-[700px] rounded-full bg-blue-500/10 blur-[200px]" />
+      <div className="absolute top-[780px] left-[-120px] h-[340px] w-[340px] rounded-full bg-blue-500/10 blur-[120px] sm:top-[850px] sm:left-[10%] sm:h-[500px] sm:w-[500px] sm:blur-[160px] lg:top-[900px] lg:left-[20%] lg:h-[700px] lg:w-[700px] lg:blur-[200px]" />
 
       {/* Meio inferior */}
-      <div className="absolute top-[1800px] right-[10%] h-[800px] w-[800px] rounded-full bg-cyan-300/10 blur-[220px]" />
+      <div className="absolute top-[1450px] right-[-160px] h-[360px] w-[360px] rounded-full bg-cyan-300/10 blur-[120px] sm:top-[1650px] sm:right-[-80px] sm:h-[520px] sm:w-[520px] sm:blur-[180px] lg:top-[1800px] lg:right-[10%] lg:h-[800px] lg:w-[800px] lg:blur-[220px]" />
 
       {/* Final */}
-      <div className="absolute bottom-[-300px] left-[10%] h-[700px] w-[700px] rounded-full bg-violet-400/10 blur-[200px]" />
+      <div className="absolute bottom-[-160px] left-[-120px] h-[360px] w-[360px] rounded-full bg-violet-400/10 blur-[120px] sm:bottom-[-220px] sm:left-[5%] sm:h-[500px] sm:w-[500px] sm:blur-[160px] lg:bottom-[-300px] lg:left-[10%] lg:h-[700px] lg:w-[700px] lg:blur-[200px]" />
     </div>
   )
 }
