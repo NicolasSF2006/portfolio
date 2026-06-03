@@ -1,5 +1,3 @@
-import "./App.styles.css"
-
 // Componentes estruturais da página
 import { Header } from "./components/Header"
 import { Footer } from "@/components/Footer"
@@ -44,9 +42,9 @@ export function App() {
         {/*
           Conteúdo principal da página.
 
-          mt-[200px]: cria espaço inicial abaixo do header.
+          mt-50: cria espaço inicial abaixo do header.
         */}
-        <main className="mt-[200px]">
+        <main className="mt-50]">
           {/* Seção inicial/apresentação */}
           <SecaoIntroducao />
 
