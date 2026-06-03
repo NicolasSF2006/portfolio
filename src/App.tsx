@@ -44,7 +44,7 @@ export function App() {
 
           mt-50: cria espaço inicial abaixo do header.
         */}
-        <main className="mt-50]">
+        <main className="mt-50">
           {/* Seção inicial/apresentação */}
           <SecaoIntroducao />
 
