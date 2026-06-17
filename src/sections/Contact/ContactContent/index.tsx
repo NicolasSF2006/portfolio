@@ -34,7 +34,7 @@ export function ContactContent() {
         No mobile, essas informações são renderizadas no index.tsx da seção,
         abaixo do formulário, para seguir a ordem visual do layout mobile.
       */}
-      <div className="flex hidden w-full flex-col gap-5 lg:flex">
+      <div className="hidden w-full flex-col gap-5 lg:flex">
         <ContactInfo icon={<Mail />} text="nicolasfrazao2020@gmail.com" />
 
         <ContactInfo icon={<MapPin />} text="São Paulo - Brasil" />
