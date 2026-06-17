@@ -12,7 +12,7 @@ export function SoftSkillsTitle({ children }: Props) {
       O texto fica alinhado à direita para acompanhar o layout da seção.
       O tamanho aumenta progressivamente conforme a tela cresce.
     */
-    <h5 className="text-right text-sm font-bold text-white md:text-[18px] lg:text-2xl">
+    <h5 className="text-right text-sm font-bold text-white md:text-[18px] xl:text-2xl">
       {children}
     </h5>
   )

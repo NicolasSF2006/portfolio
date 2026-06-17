@@ -56,18 +56,18 @@ export function TechStack() {
       No mobile/tablet, exibe apenas os ícones.
       No desktop, exibe o name da tecnologia acima do ícone.
     */
-    <ul className="flex items-center gap-5 md:gap-6 lg:flex-wrap lg:gap-8">
+    <ul className="flex items-center gap-5 md:gap-6 xl:flex-wrap xl:gap-8">
       {technologies.map((tech) => (
         <li key={tech.name} className="flex items-center justify-center">
           {/* Ícone exibido apenas no mobile e tablet */}
           <img
             src={tech.icon}
             alt={tech.name}
-            className="h-5 w-5 md:h-6 md:w-6 lg:hidden"
+            className="h-5 w-5 md:h-6 md:w-6 xl:hidden"
           />
 
           {/* Versão desktop: name da tecnologia + ícone */}
-          <div className="hidden flex-col items-center gap-2 lg:flex">
+          <div className="hidden flex-col items-center gap-2 xl:flex">
             <p className="font-['Encode_Sans_Semi_Expanded'] text-xs font-bold">
               {tech.name}
             </p>

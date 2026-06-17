@@ -23,13 +23,13 @@ export function Hero() {
     /*
       Seção de introdução do portfólio.
 
-      min-h-dvh: ocupa no mínimo a altura total da tela.
+      min-h-[78dvh]: ocupa no mínimo a altura total da tela.
       justify-center: centraliza o conteúdo verticalmente.
       max-w-[326px]: largura pensada para mobile.
       sm:max-w-[720px]: aumenta a largura em telas maiores.
       gap responsivo: controla o espaçamento entre título, descrição e botões.
     */
-    <section className="mx-auto flex min-h-dvh w-full max-w-[326px] flex-col items-center justify-center gap-5 px-4 pt-24 text-center sm:max-w-[720px] sm:gap-7">
+    <section className="mx-auto flex min-h-[78dvh] w-full max-w-[326px] flex-col items-center justify-center gap-5 px-4 pt-24 text-center sm:max-w-[720px] sm:gap-7">
       {/* Agrupa título e subtítulo para controlar o espaçamento entre eles */}
       <div className="flex flex-col gap-1 sm:gap-2">
         <HeroTitle>

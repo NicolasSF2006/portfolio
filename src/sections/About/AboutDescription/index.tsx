@@ -13,7 +13,7 @@ export function AboutDescription({ children }: Props) {
       O tamanho e o espaçamento entre linhas aumentam em telas maiores
       para melhorar a leitura.
     */
-    <p className="w-full text-sm leading-normal font-normal text-white md:text-[16px] md:leading-[24px] lg:text-xl lg:leading-normal">
+    <p className="w-full text-sm leading-normal font-normal text-white md:text-[16px] md:leading-[24px] xl:text-xl xl:leading-normal">
       {children}
     </p>
   )

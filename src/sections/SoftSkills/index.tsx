@@ -11,7 +11,7 @@ export function SoftSkills() {
       No desktop, ela mantém alinhamento à direita e recebe margem lateral
       para ficar posicionada visualmente do lado oposto da seção "Sobre".
     */
-    <section className="mx-auto mt-[180px] flex w-full max-w-[355px] flex-col items-end gap-5 md:max-w-[720px] md:px-8 lg:mt-[232px] lg:mr-[138px] lg:ml-auto lg:max-w-[931px] lg:gap-8 lg:px-0">
+    <section className="mx-auto mt-[180px] flex w-full max-w-[355px] flex-col items-end gap-5 md:max-w-[720px] md:px-8 xl:mt-[232px] xl:mr-[138px] xl:ml-auto xl:max-w-[931px] xl:gap-8 xl:px-0">
       {/* Título da seção */}
       <SoftSkillsTitle>Feedback não é crítica, é ferramenta.</SoftSkillsTitle>
 
@@ -24,7 +24,7 @@ export function SoftSkills() {
       */}
       <SoftSkillsDescription>
         {/* Texto exibido no mobile e tablet */}
-        <span className="lg:hidden">
+        <span className="xl:hidden">
           Sou amante de filosofia e muito <strong>empático</strong>,
           características que me permitem bom{" "}
           <strong>trabalho em equipe</strong>. Como alguém{" "}
@@ -37,7 +37,7 @@ export function SoftSkills() {
         </span>
 
         {/* Texto exibido apenas no desktop */}
-        <span className="hidden lg:inline">
+        <span className="hidden xl:inline">
           Sou amante de filosofia e uma pessoa muito empática, características
           que me permitem bom trabalho em equipe. Possuo espírito de liderança e
           almejo evoluir em minha carreira, trabalhando com resiliência e
@@ -51,7 +51,7 @@ export function SoftSkills() {
         A lista aparece apenas no desktop para manter o mobile mais limpo
         e evitar excesso de informação visual em telas menores.
       */}
-      <div className="hidden lg:block">
+      <div className="hidden xl:block">
         <SoftSkillsList />
       </div>
     </section>
